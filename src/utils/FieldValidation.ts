@@ -13,3 +13,16 @@ export const validationSchema = yup.object({
         then: yup.string().required("Please select label")
     })
 });
+
+export const opdValidationSchema = yup.object({
+    age: yup.date().required("Age is required").nullable(),
+    consultant: yup.string().required("Consultant is required"),
+    services: yup.array()
+        .of(
+            yup.object().shape({
+                serviceName: yup.string().required("Service is required Field"),
+                rate: yup.number().min(1, "Atleast 1 is required").required("Rate is required Field"),
+                qty: yup.number().min(1, "Atleast 1 is required").required("Quantity is equired Field")
+            })
+        )
+});

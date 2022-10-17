@@ -57,3 +57,18 @@ export const bloodOptions = [
     { key: "AB Positive", value: "ab-positive" },
     { key: "AB Negative", value: "AB-negative" },
 ]
+
+export const consultantOptions = [
+    { key: "Select Consultant", value: "" },
+    { key: "DK VATSAL", value: "dk-vatsal" },
+]
+
+export const serviceOptions = [
+    { key: "Select Service", value: "" },
+    { key: "Consultation Fees (Dr. DK Vatsal)", value: "dk-vatsal-fees" },
+    { key: "STITCHING CHARGES", value: "stitching" },
+    { key: "2D ECHO Dr. SWAPNIL", value: "2d-echo" },
+    { key: "FIRST AID CHARGES", value: "firstaid" },
+    { key: "DUMMY SERVICE ONE", value: "ds-one" },
+    { key: "DUMMY SERVICE TWO", value: "ds-two" },
+]

@@ -15,9 +15,9 @@ interface Props {
 function Select(props: Props) {
     const { label, name, options, ...rest } = props;
     return (
-        <Stack direction={"row"} spacing={2} alignItems={"center"}>
+        <Stack direction={"row"} spacing={1} alignItems={"center"}>
             <label htmlFor={name}>{label}</label>
-            <Stack style={{ width: "100%" }}>
+            <Stack>
                 <Field as="select" id={name} name={name} {...rest}>
                     {
                         options?.map((option, index: number) => {

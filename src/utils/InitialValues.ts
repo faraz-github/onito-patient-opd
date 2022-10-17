@@ -37,7 +37,7 @@ export const initialValues: Values = {
         number: ""
     },
     guardianLabel: "",
-    guardianName:"",
+    guardianName: "",
     email: "",
     emergencyMobile: "",
     address: "",
@@ -51,3 +51,31 @@ export const initialValues: Values = {
     bloodGroup: "",
     nationality: "India",
 };
+
+export interface Service {
+    serviceName: string;
+    rate: number;
+    qty: number;
+    total: number;
+    remark: string;
+}
+
+export interface OPDTypes {
+    age: any;
+    consultant: string;
+    referredby: string;
+    services: Service[];
+}
+
+export const opdInitialValues: OPDTypes = {
+    age: null,
+    consultant: "",
+    referredby: "",
+    services: [{
+        serviceName: "",
+        rate: 0,
+        qty: 0,
+        total: 0,
+        remark: ""
+    }]
+}
