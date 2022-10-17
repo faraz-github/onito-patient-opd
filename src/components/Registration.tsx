@@ -1,5 +1,5 @@
-import { Box, Button, Grid, Typography, Stack } from "@mui/material";
-import { Formik } from "formik";
+import { Alert, Box, Button, Grid, Typography, Stack } from "@mui/material";
+import { Formik, ErrorMessage } from "formik";
 import axios from "axios";
 
 import { initialValues, Values } from "../utils/InitialValues";
@@ -11,14 +11,9 @@ import FormikController from "./FormikController";
 function Registration() {
 
     const onSubmit = async (values: Values) => {
-        // console.log(new Date().getFullYear() - values.birthDate.getFullYear());
-        // console.log(typeof(values.birthDate));
-        // console.log(new Date().getFullYear());
         console.log("Submitted");
         try {
             const response = await axios.post("https://httpbin.org/post", values);
-            // console.log(response.data.data);
-            // console.log(typeof (response.data.data));
             const data = JSON.parse(response.data.data);
             console.log(data);
 
@@ -35,7 +30,8 @@ function Registration() {
             onSubmit={onSubmit}
         >
             {(formik) => {
-                const { handleSubmit } = formik;
+                const { handleSubmit, errors } = formik;
+                
                 return (
                     <form onSubmit={handleSubmit}>
                         <Box>
@@ -221,7 +217,35 @@ function Registration() {
                                 </Grid>
                             </Grid>
                         </Box>
+
                         <Box sx={{ my: 1, display: "flex", alignItems: "center", justifyContent: "flex-end" }}>
+                            {
+                                errors.name
+                                    ?
+                                    <Alert severity="error" sx={{ width: "100%", mr: 1 }}>
+                                        <ErrorMessage name="name" />
+                                    </Alert>
+                                    :
+                                    errors.birthDate
+                                        ?
+                                        <Alert severity="error" sx={{ width: "100%", mr: 1 }}>
+                                            <ErrorMessage name="birthDate" />
+                                        </Alert>
+                                        :
+                                        errors.mobile
+                                            ?
+                                            <Alert severity="error" sx={{ width: "100%", mr: 1 }}>
+                                                <ErrorMessage name="mobile" />
+                                            </Alert>
+                                            :
+                                            errors.guardianLabel
+                                                ?
+                                                <Alert severity="error" sx={{ width: "100%", mr: 1 }}>
+                                                    <ErrorMessage name="guardianLabel" />
+                                                </Alert>
+                                                : null
+                            }
+
                             <Stack direction={"row"} spacing={1}>
                                 <Button size="large" color="error" type="reset" variant="outlined" disableElevation>Cancel</Button>
                                 <Button size="large" color="success" type="submit" variant="contained" disableElevation>Submit</Button>

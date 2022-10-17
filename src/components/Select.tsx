@@ -1,5 +1,5 @@
 import { Stack } from "@mui/material";
-import { Field, ErrorMessage } from "formik";
+import { Field } from "formik";
 
 interface Option {
     key: string;
@@ -17,20 +17,17 @@ function Select(props: Props) {
     return (
         <Stack direction={"row"} spacing={2} alignItems={"center"}>
             <label htmlFor={name}>{label}</label>
-            <Stack style={{ width: "100%" }}>
-                <Field as="select" id={name} name={name} {...rest}>
-                    {
-                        options?.map((option, index: number) => {
-                            return (
-                                <option key={index} value={option.value}>
-                                    {option.key}
-                                </option>
-                            )
-                        })
-                    }
-                </Field>
-                <ErrorMessage className="invalidInput" name={name} component="div" />
-            </Stack>
+            <Field as="select" id={name} name={name} {...rest} style={{ width: "100%" }}>
+                {
+                    options?.map((option, index: number) => {
+                        return (
+                            <option key={index} value={option.value}>
+                                {option.key}
+                            </option>
+                        )
+                    })
+                }
+            </Field>
         </Stack>
     )
 }
